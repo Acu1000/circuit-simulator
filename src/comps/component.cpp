@@ -1,0 +1,1 @@
+#include<comps/component.hpp>

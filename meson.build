@@ -1,0 +1,21 @@
+project(
+  'circuitsim',
+  'cpp',
+  version : '0.1',
+  meson_version : '>= 1.3.0',
+  default_options : ['warning_level=3', 'cpp_std=c++20'],
+)
+
+include_dirs = include_directories('include')
+
+exe = executable(
+  'circuitsim',
+  'src/main.cpp',
+  'src/comps/component.cpp',
+  'src/comps/resistor.cpp',
+  'src/parts/node.cpp',
+  'src/parts/terminal.cpp',
+  'src/simulation/simulation_builder.cpp',
+  install : true,
+  include_directories : include_dirs
+)
