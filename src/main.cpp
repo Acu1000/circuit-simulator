@@ -3,13 +3,14 @@
 
 #include<simulation/simulation_builder.hpp>
 #include<comps/resistor.hpp>
+#include<comps/dcpower.hpp>
 
 int main() {
     
     Resistor r1(10);
-    Resistor r2(20);
+    DCPower v1(10);
 
-    r1.A.connect(r2.B);
+    v1.Plus.connect(r1.A);
 
     cout << r1.get_conductance() << '\n';
 }
