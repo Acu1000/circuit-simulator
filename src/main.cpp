@@ -8,9 +8,11 @@
 int main() {
     
     Resistor r1(10);
+    Resistor r2(10);
     DCPower v1(10);
 
     v1.Plus.connect(r1.A);
+    r1.B.connect(r2.A);
 
-    cout << r1.get_conductance() << '\n';
+    SimulationBuilder::get()->build_static();
 }

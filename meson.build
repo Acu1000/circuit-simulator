@@ -13,10 +13,12 @@ exe = executable(
   'src/main.cpp',
   'src/comps/component.cpp',
   'src/comps/resistor.cpp',
+  'src/comps/voltage_source.cpp',
   'src/comps/dcpower.cpp',
   'src/parts/node.cpp',
   'src/parts/terminal.cpp',
   'src/simulation/simulation_builder.cpp',
+  'src/simulation/static_simulation.cpp',
   install : true,
   include_directories : include_dirs
 )

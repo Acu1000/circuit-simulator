@@ -3,6 +3,7 @@
 #include<global.hpp>
 #include<parts/terminal.hpp>
 
+// Abstract
 template<int TERMINAL_COUNT>
 class Component {
     protected:

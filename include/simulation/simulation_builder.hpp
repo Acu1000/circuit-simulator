@@ -3,6 +3,8 @@
 #include<global.hpp>
 #include<vector>
 #include<parts/node.hpp>
+#include<simulation/static_simulation.hpp>
+#include<comps/voltage_source.hpp>
 
 // Singleton
 class SimulationBuilder {
@@ -24,9 +26,11 @@ class SimulationBuilder {
 
     private:
     vector<Node> nodes;
-    int node_count = 0;
+    RefVector<VoltageSource> voltageSources;
 
     public:
     Node& create_node();
+    StaticSimulation build_static();
+    void register_voltage_source(VoltageSource& p_source);
 
 };
