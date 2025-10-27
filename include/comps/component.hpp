@@ -2,18 +2,14 @@
 
 #include<global.hpp>
 #include<parts/terminal.hpp>
+#include<array>
 
-// Abstract
-template<int TERMINAL_COUNT>
 class Component {
     protected:
-    Terminal terminals[TERMINAL_COUNT];
+    int terminal_count;
+    vector<Terminal> terminals;
 
-    Component() {
-        for (int i=0; i<TERMINAL_COUNT; i++) {
-            terminals[i].set_id(i);
-        }
-    }
+    Component(int p_terminal_count=2);
 
     public:
     virtual real_t get_conductance(int, int) {return 0;}

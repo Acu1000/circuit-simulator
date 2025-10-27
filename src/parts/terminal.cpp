@@ -1,9 +1,11 @@
 #include<parts/terminal.hpp>
 #include<simulation/simulation_builder.hpp>
 
-int Terminal::get_id() {return id;}
+Terminal::Terminal(Component& p_owner, int p_id) : owner(p_owner), id(p_id)
+{
+}
 
-void Terminal::set_id(int p_id) {id = p_id;}
+int Terminal::get_id() {return id;}
 
 bool Terminal::has_node() 
 {

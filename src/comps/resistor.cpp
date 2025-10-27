@@ -1,6 +1,6 @@
 #include<comps/resistor.hpp>
 
-Resistor::Resistor(real_t p_resistance) : Component<2>(), resistance(p_resistance)  {
+Resistor::Resistor(real_t p_resistance) : Component(2), resistance(p_resistance)  {
     
 }
 

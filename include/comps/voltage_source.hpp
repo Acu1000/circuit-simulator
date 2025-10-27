@@ -4,7 +4,7 @@
 #include<comps/component.hpp>
 
 // Abstract
-class VoltageSource : protected Component<2> {
+class VoltageSource : protected Component {
     public:
     Terminal& Plus = terminals[0];
     Terminal& Minus = terminals[1];

@@ -2,7 +2,7 @@
 
 #include<simulation/simulation_builder.hpp>
 
-VoltageSource::VoltageSource()
+VoltageSource::VoltageSource() : Component(2)
 {
     SimulationBuilder::get()->register_voltage_source(*this);
 }
