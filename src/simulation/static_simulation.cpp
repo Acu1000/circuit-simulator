@@ -34,6 +34,6 @@ void StaticSimulation::simulate()
         cout << "Node " << i << " voltage: " << x[i] << "V\n";
     }
     for (int i=0; i<voltage_source_count; i++) {
-        cout << "Source " << i+node_count << " current: " << x[i+node_count] << "A\n";
+        cout << "Source " << i << " current: " << x[i+node_count] << "A\n";
     }
 }
