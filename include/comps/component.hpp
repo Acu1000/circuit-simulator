@@ -13,4 +13,5 @@ class Component {
 
     public:
     virtual real_t get_conductance(int, int) {return 0;}
+    vector<Terminal*> get_terminals();
 };

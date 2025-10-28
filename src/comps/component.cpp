@@ -7,3 +7,11 @@ Component::Component(int p_terminal_count) : terminal_count(p_terminal_count)
         terminals.push_back(new_terminal);
     }
 }
+vector<Terminal*> Component::get_terminals()
+{
+    vector<Terminal*> result;
+    for (Terminal& t : terminals) {
+        result.push_back(&t);
+    }
+    return result;
+}

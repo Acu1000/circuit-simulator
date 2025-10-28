@@ -7,12 +7,16 @@
 
 int main() {
     
-    Resistor r1(10);
-    Resistor r2(10);
+    Resistor r1(40);
+    Resistor r2(20);
+    Resistor r3(40);
     DCPower v1(10);
+
+    // - v1 -- r1 -- r2 -
 
     v1.Plus.connect(r1.A);
     r1.B.connect(r2.A);
+    r1.B.connect(r3.A);
 
     SimulationBuilder::get()->build_static();
 }
