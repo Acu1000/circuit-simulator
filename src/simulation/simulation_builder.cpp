@@ -12,7 +12,7 @@ Node& SimulationBuilder::create_node()
 StaticSimulation SimulationBuilder::build_static()
 {
     const int N = nodes.size();
-    const int M = voltageSources.size();
+    const int M = voltage_sources.size();
 
     cout << "Node count: " << N << endl;
     cout << "Source count: " << M << endl;
@@ -40,6 +40,18 @@ StaticSimulation SimulationBuilder::build_static()
             }
         }
     }
+    
+    // Build connection matrix
+    for (int source_id=0; source_id<voltage_sources.size(); source_id++) {
+        VoltageSource& source = voltage_sources.at(source_id);
+
+        if (source.Plus.has_node()) {
+            sim.set_connection(source.Plus.get_node().get_id(), source_id, +1);
+        }
+        if (source.Minus.has_node()) {
+            sim.set_connection(source.Minus.get_node().get_id(), source_id, -1);
+        }
+    }
 
     sim.simulate();
     return sim;
@@ -47,5 +59,5 @@ StaticSimulation SimulationBuilder::build_static()
 
 void SimulationBuilder::register_voltage_source(VoltageSource& p_source)
 {
-    voltageSources.push_back(p_source);
+    voltage_sources.push_back(p_source);
 }

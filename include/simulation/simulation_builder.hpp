@@ -26,7 +26,7 @@ class SimulationBuilder {
 
     private:
     vector<Node> nodes;
-    RefVector<VoltageSource> voltageSources;
+    RefVector<VoltageSource> voltage_sources;
 
     public:
     Node& create_node();
