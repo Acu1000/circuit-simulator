@@ -22,14 +22,11 @@ StaticSimulation SimulationBuilder::build_static()
     // Build Conductance Matrix
     for (int node_id=0; node_id<N; node_id++) {
         Node& node = nodes.at(node_id);
-        cout << "Node " << node_id << endl;
         for (Terminal* t : node.get_terminals()) {
-            cout << "Terminal " << t->get_id() << endl;
             Component& comp = t->get_owner();
             for (Terminal* ot : comp.get_terminals()) {
                 if (t == ot) continue;
                 real_t cond = comp.get_conductance(t->get_id(), ot->get_id());
-                cout << "Cond: " << cond << endl;
 
                 if (ot->has_node()) {
                     Node& other_node = ot->get_node();
@@ -41,8 +38,8 @@ StaticSimulation SimulationBuilder::build_static()
         }
     }
     
-    // Build connection matrix
-    for (int source_id=0; source_id<voltage_sources.size(); source_id++) {
+    // Build connection matrix & voltage source vector
+    for (int source_id=0; source_id<M; source_id++) {
         VoltageSource& source = voltage_sources.at(source_id);
 
         if (source.Plus.has_node()) {
@@ -51,9 +48,10 @@ StaticSimulation SimulationBuilder::build_static()
         if (source.Minus.has_node()) {
             sim.set_connection(source.Minus.get_node().get_id(), source_id, -1);
         }
+
+        sim.set_voltage_source(source_id, source.get_voltage());
     }
 
-    sim.simulate();
     return sim;
 }
 

@@ -20,5 +20,6 @@ class StaticSimulation {
     StaticSimulation(int p_node_count, int p_voltage_source_count);
     void add_conductance(int p_node_id1, int p_node_id2, real_t p_conductance);
     void set_connection(int p_node_id, int p_source_id, int p_value);
+    void set_voltage_source(int p_source_id, real_t p_voltage);
     void simulate();
 };

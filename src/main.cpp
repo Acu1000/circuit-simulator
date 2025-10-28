@@ -11,14 +11,14 @@ int main() {
     Resistor r2(20);
     Resistor r3(40);
     DCPower v1(10);
-    DCPower v2(20);
 
     // - v1 -- r1 -- r2 -
 
     v1.Plus.connect(r1.A);
     r1.B.connect(r2.A);
     r1.B.connect(r3.A);
-    v2.Plus.connect(r2.A);
 
-    SimulationBuilder::get()->build_static();
+    StaticSimulation sim = SimulationBuilder::get()->build_static();
+
+    sim.simulate();
 }
