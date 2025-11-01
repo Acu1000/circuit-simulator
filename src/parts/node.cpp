@@ -20,4 +20,3 @@ unordered_set<Terminal *> Node::get_terminals()
 {
     return terminals;
 }
-

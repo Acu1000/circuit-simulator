@@ -4,6 +4,8 @@
 #include<parts/terminal.hpp>
 #include<array>
 
+class Simulation;
+
 class Component {
     protected:
     int terminal_count;
@@ -14,4 +16,5 @@ class Component {
     public:
     virtual real_t get_conductance(int, int) {return 0;}
     vector<Terminal*> get_terminals();
+    virtual void build(Simulation& sim) {};
 };

@@ -18,6 +18,7 @@ class Terminal {
     Component& get_owner();
     bool has_node();
     Node& get_node();
+    int get_node_id();
     void set_node(Node& p_node);
     void connect(Terminal& other);
 };

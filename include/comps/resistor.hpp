@@ -11,7 +11,7 @@ class Resistor : Component {
     Resistor(real_t p_resistance);
 
     real_t get_conductance(int=0, int=0) override;
-
+    void build(Simulation& sim) override;
 
     private:
     real_t resistance;

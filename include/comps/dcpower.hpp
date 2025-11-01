@@ -10,4 +10,5 @@ class DCPower : public VoltageSource {
     public:
     DCPower(real_t p_voltage);
     real_t get_voltage() override;
+    void build(Simulation& sim) override;
 };

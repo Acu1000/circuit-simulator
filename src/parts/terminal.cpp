@@ -1,5 +1,6 @@
 #include<parts/terminal.hpp>
 #include<simulation/simulation_builder.hpp>
+#include "terminal.hpp"
 
 Terminal::Terminal(Component& p_owner, int p_id) : owner(p_owner), id(p_id)
 {
@@ -22,7 +23,12 @@ Node& Terminal::get_node()
     return node->get();
 }
 
-void Terminal::set_node(Node& p_node)
+int Terminal::get_node_id()
+{
+    return get_node().get_id();
+}
+
+void Terminal::set_node(Node &p_node)
 {
     node = p_node;
 }
