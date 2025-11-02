@@ -13,7 +13,6 @@ exe = executable(
   'src/main.cpp',
   'src/comps/component.cpp',
   'src/comps/resistor.cpp',
-  'src/comps/voltage_source.cpp',
   'src/comps/dcpower.cpp',
   'src/parts/node.cpp',
   'src/parts/terminal.cpp',

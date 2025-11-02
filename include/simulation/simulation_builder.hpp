@@ -3,7 +3,7 @@
 #include<global.hpp>
 #include<vector>
 #include<parts/node.hpp>
-#include<comps/voltage_source.hpp>
+#include<comps/component.hpp>
 
 // Singleton
 class SimulationBuilder {
