@@ -25,5 +25,6 @@ void Resistor::build(Simulation &sim)
         int node_a_id = A.get_node_id();
         int node_b_id = B.get_node_id();
         sim.add_base_conductance(node_a_id, node_b_id, -1.0 / resistance);
+        sim.add_base_conductance(node_b_id, node_a_id, -1.0 / resistance);
     }
 }

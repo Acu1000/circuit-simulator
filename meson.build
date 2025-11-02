@@ -18,7 +18,6 @@ exe = executable(
   'src/parts/node.cpp',
   'src/parts/terminal.cpp',
   'src/simulation/simulation_builder.cpp',
-  'src/simulation/static_simulation.cpp',
   'src/simulation/simulation.cpp',
   install : true,
   include_directories : include_dirs

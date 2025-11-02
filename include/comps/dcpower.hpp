@@ -1,14 +1,16 @@
 #pragma once
 
 #include<global.hpp>
-#include<comps/voltage_source.hpp>
+#include<comps/component.hpp>
 
-class DCPower : public VoltageSource {
+class DCPower : public Component {
     private:
     real_t voltage;
 
     public:
+    Terminal& Plus = terminals[0];
+    Terminal& Minus = terminals[1];
+
     DCPower(real_t p_voltage);
-    real_t get_voltage() override;
     void build(Simulation& sim) override;
 };

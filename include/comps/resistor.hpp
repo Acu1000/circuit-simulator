@@ -3,7 +3,7 @@
 #include<global.hpp>
 #include<comps/component.hpp>
 
-class Resistor : Component {
+class Resistor : public Component {
     public:
     Terminal& A = terminals[0];
     Terminal& B = terminals[1];

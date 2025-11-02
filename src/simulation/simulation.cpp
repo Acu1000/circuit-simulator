@@ -1,6 +1,7 @@
 #include <simulation/simulation.hpp>
 
 Simulation::Simulation(int p_node_count) :
+node_count(p_node_count),
 G(MatrixX::Zero(p_node_count, p_node_count)),
 B(MatrixX::Zero(p_node_count, 0)),
 C(MatrixX::Zero(0, p_node_count)),
@@ -40,7 +41,7 @@ int Simulation::add_voltage_source()
 }
 
 void Simulation::set_connection(int p_node_id, int p_source_id, int p_value)
-{
+{   
     B(p_node_id, p_source_id) = p_value;
     C(p_source_id, p_node_id) = p_value;
 }
@@ -52,7 +53,11 @@ void Simulation::set_source_voltage(int p_source_id, real_t p_voltage)
 
 void Simulation::simulate()
 {
-    MatrixX GBCD(node_count+voltage_source_count, node_count+voltage_source_count);
+    // |G B| |v|   |I|
+    // |C D| |i| = |E|
+
+    MatrixX GBCD;
+    GBCD.resize(node_count+voltage_source_count, node_count+voltage_source_count);
     GBCD.block(0, 0, node_count, node_count) = G;
     GBCD.block(0, node_count, node_count, voltage_source_count) = B;
     GBCD.block(node_count, 0, voltage_source_count, node_count) = C;
@@ -62,6 +67,11 @@ void Simulation::simulate()
     IE.block(0, 0, node_count, 1) = I;
     IE.block(node_count, 0, voltage_source_count, 1) = E;
 
-    cout << GBCD << '\n';
-    cout << IE << '\n';
+    VectorX x = GBCD.colPivHouseholderQr().solve(IE);
+    for (int i=0; i<node_count; i++) {
+        cout << "Node " << i << " voltage: " << x[i] << "V\n";
+    }
+    for (int i=0; i<voltage_source_count; i++) {
+        cout << "Source " << i << " current: " << x[i+node_count] << "A\n";
+    }
 }

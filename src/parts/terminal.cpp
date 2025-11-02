@@ -1,6 +1,5 @@
 #include<parts/terminal.hpp>
 #include<simulation/simulation_builder.hpp>
-#include "terminal.hpp"
 
 Terminal::Terminal(Component& p_owner, int p_id) : owner(p_owner), id(p_id)
 {

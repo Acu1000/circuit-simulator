@@ -1,12 +1,7 @@
 #include<comps/dcpower.hpp>
 #include<simulation/simulation.hpp>
 
-DCPower::DCPower(real_t p_voltage) : VoltageSource(), voltage(p_voltage) {}
-
-real_t DCPower::get_voltage()
-{
-    return voltage;
-}
+DCPower::DCPower(real_t p_voltage) : voltage(p_voltage) {}
 
 void DCPower::build(Simulation &sim)
 {

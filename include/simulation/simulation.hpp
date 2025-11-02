@@ -10,8 +10,8 @@ typedef Eigen::Block<real_t, Eigen::Dynamic, Eigen::Dynamic> BlockX;
 class Simulation {
 
     private:
-    int node_count;
-    int voltage_source_count;
+    int node_count=0;
+    int voltage_source_count=0;
     
     // Conductance matrix
     MatrixX G;
