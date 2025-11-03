@@ -7,7 +7,7 @@
 
 using namespace std;
 
-typedef float real_t;
+typedef double real_t;
 
 template<typename T>
 using NullableRef = std::optional<std::reference_wrapper<T>>;

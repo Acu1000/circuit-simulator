@@ -67,6 +67,11 @@ void Simulation::simulate()
     IE.block(0, 0, node_count, 1) = I;
     IE.block(node_count, 0, voltage_source_count, 1) = E;
 
+    if (abs(GBCD.determinant()) < 0.001) {      // TODO: find a cleaner way of handling this
+        cerr << "ERROR: DETERMINANT IS 0\n";
+        exit(EXIT_FAILURE);
+    }
+
     VectorX x = GBCD.colPivHouseholderQr().solve(IE);
     for (int i=0; i<node_count; i++) {
         cout << "Node " << i << " voltage: " << x[i] << "V\n";
